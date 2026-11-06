@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-tema="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portal Notícia Já — as principais notícias de tecnologia, política, esportes, economia, cultura, ciência, saúde e mundo.">
+  <title>Portal Notícia Já — Informação em tempo real</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Barra de progresso de leitura -->
+  <div class="barra-progresso" id="barraProgresso"></div>
+
+  <!-- ================= CABEÇALHO ================= -->
+  <header class="cabecalho">
+    <div class="topo">
+      <div class="container topo__interno">
+        <span class="topo__data" id="dataAtual"></span>
+        <div class="topo__acoes">
+          <span class="topo__aviso">🔴 Ao vivo</span>
+          <button class="btn-icone" id="btnTema" aria-label="Alternar tema claro/escuro" title="Alternar tema">🌙</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cabecalho__principal">
+      <div class="container cabecalho__interno">
+        <a href="#" class="logo" id="logo">
+          <span class="logo__icone">📰</span>
+          <span class="logo__texto">Notícia<strong>Já</strong></span>
+        </a>
+
+        <form class="busca" id="formBusca" role="search">
+          <input
+            type="search"
+            id="campoBusca"
+            class="busca__campo"
+            placeholder="Buscar notícias, temas ou categorias..."
+            autocomplete="off"
+            aria-label="Buscar notícias">
+          <button type="submit" class="busca__botao" aria-label="Buscar">🔍</button>
+        </form>
+
+        <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+
+    <nav class="navegacao" id="navegacao" aria-label="Categorias">
+      <div class="container">
+        <ul class="categorias" id="listaCategorias"></ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ================= CONTEÚDO PRINCIPAL ================= -->
+  <main class="container principal">
+
+    <section class="destaque" id="destaque" aria-label="Notícia em destaque"></section>
+
+    <div class="layout">
+
+      <section class="conteudo">
+        <div class="secao__topo">
+          <h2 class="secao__titulo" id="tituloSecao">Últimas Notícias</h2>
+          <span class="secao__contador" id="contadorResultados"></span>
+        </div>
+
+        <div class="grade-noticias" id="gradeNoticias"></div>
+
+        <div class="vazio" id="mensagemVazia" hidden>
+          <span class="vazio__icone">🔍</span>
+          <h3>Nenhuma notícia encontrada</h3>
+          <p>Tente outra palavra-chave ou escolha uma categoria diferente.</p>
+          <button class="btn btn--primario" id="btnLimparBusca">Limpar filtros</button>
+        </div>
+
+        <div class="carregar-mais">
+          <button class="btn btn--primario" id="btnCarregar">Carregar mais notícias</button>
+        </div>
+      </section>
+
+      <aside class="lateral">
+
+        <div class="caixa">
+          <h3 class="caixa__titulo">🔥 Mais lidas</h3>
+          <ol class="mais-lidas" id="maisLidas"></ol>
+        </div>
+
+        <div class="caixa caixa--newsletter">
+          <h3 class="caixa__titulo">📬 Newsletter diária</h3>
+          <p class="caixa__texto">Receba um resumo das principais notícias do dia direto no seu e-mail.</p>
+          <form class="newsletter" id="formNewsletter" novalidate>
+            <input type="email" id="campoEmail" class="newsletter__campo" placeholder="seu@email.com" required aria-label="Seu e-mail">
+            <button type="submit" class="btn btn--primario btn--bloco">Inscrever-se</button>
+          </form>
+          <p class="newsletter__msg" id="msgNewsletter" role="status"></p>
+        </div>
+
+        <div class="caixa">
+          <h3 class="caixa__titulo">⭐ Salvas por você</h3>
+          <ul class="favoritos" id="listaFavoritos"></ul>
+        </div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- ================= RODAPÉ ================= -->
+  <footer class="rodape">
+    <div class="container rodape__interno">
+      <div class="rodape__coluna">
+        <a href="#" class="logo logo--claro">
+          <span class="logo__icone">📰</span>
+          <span class="logo__texto">Notícia<strong>Já</strong></span>
+        </a>
+        <p class="rodape__texto">
+          Jornalismo independente, apurado e em tempo real. Informação de qualidade
+          para quem precisa entender o que acontece no Brasil e no mundo.
+        </p>
+      </div>
+
+      <div class="rodape__coluna">
+        <h4>Editorias</h4>
+        <ul class="rodape__links" id="linksRodape"></ul>
+      </div>
+
+      <div class="rodape__coluna">
+        <h4>Institucional</h4>
+        <ul class="rodape__links">
+          <li><a href="#">Quem somos</a></li>
+          <li><a href="#">Princípios editoriais</a></li>
+          <li><a href="#">Trabalhe conosco</a></li>
+          <li><a href="#">Anuncie</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+        </ul>
+      </div>
+
+      <div class="rodape__coluna">
+        <h4>Siga a redação</h4>
+        <div class="redes">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="X">🐦</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="rodape__base">
+      <div class="container">
+        <p>© <span id="anoAtual"></span> Portal Notícia Já — Projeto demonstrativo. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE LEITURA ================= -->
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitulo">
+    <div class="modal__fundo" data-fechar></div>
+
+    <article class="modal__caixa">
+      <button class="modal__fechar" data-fechar aria-label="Fechar">✕</button>
+
+      <img class="modal__imagem" id="modalImagem" src="" alt="">
+
+      <div class="modal__conteudo">
+        <span class="etiqueta" id="modalCategoria"></span>
+        <h1 class="modal__titulo" id="modalTitulo"></h1>
+        <div class="modal__meta" id="modalMeta"></div>
+
+        <div class="modal__corpo" id="modalCorpo"></div>
+
+        <div class="modal__acoes">
+          <button class="btn btn--contorno" id="btnFavoritar">☆ Salvar</button>
+          <button class="btn btn--contorno" id="btnCompartilhar">🔗 Compartilhar</button>
+        </div>
+
+        <section class="relacionadas" id="relacionadas"></section>
+      </div>
+    </article>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
